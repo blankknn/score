@@ -67,19 +67,41 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { useAuthenticate } from '../store/Authenticate';
 import { useRouter } from 'vue-router'; 
+import { ref, computed, watch } from "vue";
+
 
 const router = useRouter();
+
+const currentRoute = ref(router.currentRoute.value);
 
 const auth = useAuthenticate();
 
 // Updated navigation array excluding the "Login" link if the user is logged in
-const navigation = [
+const navigation = ref([
   { name: 'Home', href: '/', current: true },
   { name: 'Leadersboard', href: '/leadersboard', current: false },
   { name: 'Profile', href: '/profile', current: false },
   // Exclude the "Login" link if the user is logged in
   ...(auth.isLoggedIn ? [] : [{ name: 'Login', href: '/login', current: false }]),
+]);
+
+watch(
+  () => router.currentRoute.value,
+  (to, from) => {
+    currentRoute.value = to;
+    navigation.value = [
+  { name: 'Home', href: '/',  current: currentRoute.value.fullPath === "/", },
+  { name: 'Leadersboard', href: '/leadersboard',  current: currentRoute.value.fullPath === "/leadersboard" },
+  { name: 'Profile', href: '/profile', current: currentRoute.value.fullPath === "/profile" },
+  // Exclude the "Login" link if the user is logged in
+  ...(auth.isLoggedIn ? [] : [{ name: 'Login', href: '/login', current: currentRoute.value.fullPath === "/login" }]),
 ];
+    console.log(currentRoute.value.fullPath, "in navbae");
+  }
+);
+
+console.log(currentRoute.value.fullPath, "navbar");
+
 
 
 const signOut = (e) => {

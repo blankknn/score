@@ -108,8 +108,8 @@
         />
       </form>
     </div>
-    <div class="h-12 flex justify-center items-center">
-      <a rel="nofollow" href="/auth"
+    <div v-if="authStore.isLoggedIn === false" class="h-12 flex justify-center items-center">
+      <router-link rel="nofollow" to="/login"
         ><button
           type="button"
           class="flex flex-nowrap justify-center items-center py-2 px-2.5 rounded shadow-lg gap-x-1 font-medium text-sm sm:text-base bg-primary text-lighter"
@@ -133,7 +133,7 @@
           ><span class="whitespace-nowrap leading-none st-current"
             >Sign in with Battle.net to see your stats!</span
           >
-        </button></a
+        </button></router-link
       >
     </div>
     <div class="space-y-4">

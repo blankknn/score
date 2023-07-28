@@ -9,7 +9,7 @@
       <div class="bg-white/10 px-6 py-12 shadow sm:rounded-lg sm:px-12">
         <div class="space-y-6" >
           <div>
-            <label for="email" class="block text-sm font-normal leading-6 text-white">Username</label>
+            <label for="email" class="block text-sm font-normal leading-6 text-white">Email</label>
             <div class="mt-2">
               <input
                 id="email"
@@ -43,17 +43,10 @@
             </div>
             <div v-if="isInvalidPassword" class="mt-1 text-red-500 text-sm">Please enter a valid password.</div>
           </div>
+          <p class="text-red-500 text-sm">{{myError ? 'Email or Password is not right try again' : ''}}</p>
 
           <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-              />
-              <label for="remember-me" class="ml-3 block text-sm leading-6 text-gray-100">Remember me</label>
-            </div>
+           
 
             <div class="text-sm leading-6">
               <a href="#" class="font-normal text-white hover:text-white">Forgot password?</a>
@@ -65,6 +58,7 @@
               type="submit"
               :disabled="isFormInvalid"
               @click="onRegister"
+              
               class="flex w-full justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >Register</button>
 
@@ -89,18 +83,30 @@
 import client from '../axios.config';
 import { ref, reactive, computed } from 'vue';
 import { useRouter } from 'vue-router'; 
+
 import {useAuthenticate} from '../store/Authenticate'
 const formData = ref({
-  name:'ashif',
+  name:'kashif sulehria',
   email: '',
   password: '',
   role:'admin'
 });
 
+const myError = ref(false);
+
+
+
+if (myError.value){
+  setTimeout(() =>  {
+    myError.value = false;
+  }, 2000)
+}
+
 const auth = useAuthenticate();
 const token = ref(localStorage.getItem('token') || '');
 
 const onInputChange = () => {
+  myError.value = false;
   validateForm();
 };
 const router = useRouter(); // Assign the router instance
@@ -170,6 +176,8 @@ const onLogin = async () => {
        router.push({ name: 'home' }); 
 
       } catch (error) {
+        myError.value = true;
+        console.log(error.value);
         console.log(error);
         // Handle login error
       }
