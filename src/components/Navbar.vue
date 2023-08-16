@@ -13,7 +13,7 @@
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
             <router-link class="bg-primary px-4 py-1.5 text-white text-lg font-semibold rounded-sm tracking-wider" to="/">
-              OVERBUFF
+              BUFF
             </router-link>
           </div>
           <div class="hidden sm:ml-6 sm:block">

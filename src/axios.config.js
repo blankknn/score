@@ -7,7 +7,6 @@ const client = axios.create({
 
 export const setAuthHeader = (token) => {
     client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  client.defaults.headers.common["xtenant"] = 'ec8862dc-dfc9-4015-9353-23cb63400fef';
 };
 
 setAuthHeader(localStorage.getItem("token")); 

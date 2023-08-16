@@ -5,7 +5,7 @@
         <div
           class="text-center p-2 rounded-md text-white text-3xl tracking-wide font-title"
         >
-          Welcome to the new Overbuff!
+          Welcome to the new Buff!
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="flex flex-col space-y-2 items-center">
@@ -27,7 +27,7 @@
               </svg>
             </div>
             <div class="text-xs md:text-sm text-white font-bold uppercase">
-              OW 2 Support
+              ADDED TEAMS
             </div>
           </div>
           <div class="flex flex-col space-y-2 items-center">
@@ -48,7 +48,7 @@
                 ></path>
               </svg>
             </div>
-            <div class="text-xs md:text-sm font-bold text-white uppercase">New Heroes</div>
+            <div class="text-xs md:text-sm font-bold text-white uppercase">ADDED REGIONS</div>
           </div>
           <div class="flex flex-col space-y-2 items-center">
             <div class="inline-flex rounded-full bg-primary text-white p-1">
@@ -159,7 +159,7 @@
 import { ref, onMounted } from "vue";
 import client from "../axios.config";
 import image1 from '@/assets/images/image1.jpeg';
-import image2 from '@/assets/images/image20.png';
+import image2 from '@/assets/images/image21.png';
 import image3 from '@/assets/images/image30.png';
 import { useAuthenticate } from "../store/Authenticate";
 

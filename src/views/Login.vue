@@ -2,7 +2,7 @@
 <template> 
   <div class="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">     
-      <h2 class="mt-6 text-center text-2xl font-normal text-white leading-9 tracking-tight">OVERBUFF <span class="text-primary">LOGIN</span></h2>
+      <h2 class="mt-6 text-center text-2xl font-normal text-white leading-9 tracking-tight">BUFF <span class="text-primary">LOGIN</span></h2>
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
@@ -86,7 +86,7 @@ import { useRouter } from 'vue-router';
 
 import {useAuthenticate} from '../store/Authenticate'
 const formData = ref({
-  name:'kashif sulehria',
+  name:'kali',
   email: '',
   password: '',
   role:'admin'
